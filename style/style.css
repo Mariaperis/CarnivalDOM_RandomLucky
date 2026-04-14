@@ -1,9 +1,10 @@
 /* ===== ROOT VARIABLES ===== */
 :root {
-    --bg-deep: #342259;
+    --bg-deep: #1a0922;
     --bg-mid: #110d1e;
     --bg-card: #1a1330;
     --bg-card2: #1f1838;
+    --bg-weather: #424242;
     --accent-gold: #f5c842;
     --accent-amber: #e8a020;
     --accent-violet: #9b59e0;
@@ -137,7 +138,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--bg-card);
+    background: var(--bg-weather);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-btn);
     padding: 8px 18px;
@@ -151,23 +152,23 @@ body {
     border-color: var(--border-glow);
 }
 
-.weather-icon {
-    font-size: 22px;
-}
-
-.weather-info {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-}
-
-.weather-temp {
-    font-weight: 700;
-    color: var(--accent-gold);
-    font-size: 15px;
-}
-
 .weather-city {
     color: var(--text-secondary);
     font-size: 11px;
+}
+
+.weather-box{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    color: white;
+    font-family: Arial;
+    width: fit-content;
+    backdrop-filter: blur(10px);
+}
+
+.weather-box img{
+    width: 24px;
+    height: 24px;
 }
