@@ -9,24 +9,24 @@
 </head>
 
 <body>
-    <div class="particles" id="particles"></div>
+    <aside class="particles" id="particles" aria-hidden="true"></aside>
     <header class="header">
-        <div class="header-left">
-            <div class="logo-icon">✦</div>
-            <h1 class="logo-title"><span>Random Lucky</span></h1>
-        </div>
-        <div class="header-right">
-            <div class="weather-widget" id="weatherWidget">
+        <section class="header-left">
+            <span class="logo-icon" aria-hidden="true">✦</span>
+            <h1 class="logo-title">
+                <span>Random Lucky</span>
+            </h1>
+        </section>
+        <aside class="header-right">
+            <section class="weather-widget" id="weatherWidget" aria-label="Información meteorológica">
                 <span class="weather-icon" id="weatherIcon">⟳</span>
-                <div class="weather-info">
-                    <span class="weather-temp" id="weatherTemp">Cargando...</span>
-                    <span class="weather-city" id="weatherCity"></span>
-                </div>
-            </div>
-        </div>
+                <section class="weather-info">
+                    <p class="weather-temp" id="weatherTemp">Cargando...</p>
+                    <p class="weather-city" id="weatherCity"></p>
+                </section>
+            </section>
+        </aside>
     </header>
-
     <script src="../scripts/script.js"></script>
 </body>
-
 </html>
