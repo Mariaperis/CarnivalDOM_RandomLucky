@@ -1,0 +1,147 @@
+/* ==================================================
+   MAIN.CSS
+   Variables globales, reset, layout general, header
+================================================== */
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+    --bg-deep: #1a0922;
+    --bg-mid: #110d1e;
+    --bg-card: #1a1330;
+    --bg-card2: #1f1838;
+    --bg-weather: #424242;
+
+    --accent-gold: #f5c842;
+    --accent-amber: #e8a020;
+    --accent-violet: #9b59e0;
+    --accent-pink: #e05fa0;
+
+    --text-primary: #f0eaff;
+    --text-secondary: #b8a8d8;
+    --text-muted: #6b5a8a;
+
+    --border-subtle: rgba(155, 89, 224, 0.2);
+    --border-glow: rgba(245, 200, 66, 0.4);
+
+    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.6);
+
+    --radius-card: 18px;
+    --radius-btn: 50px;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+}
+
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== BASE ===== */
+body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== HEADER ===== */
+.header {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 32px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(63, 39, 110, 0.98) 0%,
+        rgba(10, 6, 18, 0.8) 100%
+    );
+
+    border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: blur(12px);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--accent-gold),
+        var(--accent-amber)
+    );
+
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(245, 200, 66, 0.4);
+
+    animation: rotateStar 8s linear infinite;
+}
+
+.logo-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.logo-title span {
+    background: linear-gradient(
+        90deg,
+        var(--accent-gold),
+        var(--accent-pink)
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    margin-left: 6px;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    min-height: calc(100vh - 86px);
+}
+
+.hero {
+    background: radial-gradient(circle at top, #230037, #110018);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes rotateStar {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}

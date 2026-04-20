@@ -1,0 +1,97 @@
+/* ==================================================
+   WHEEL.CSS
+   Todo lo relacionado con la ruleta
+================================================== */
+
+.viewport {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    padding-left: 80px;
+}
+
+.wheel-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wheel-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.wheel-body {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 6px solid #f6f1f6;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: conic-gradient(
+        #e6c4fc 0deg 36deg,
+        #c0d40e 36deg 72deg,
+        #f652e8 72deg 108deg,
+        #f0bb4a 108deg 144deg,
+        #0d72ad 144deg 180deg,
+        #e92246 180deg 216deg,
+        #a116ec 216deg 252deg,
+        #82d5e7 252deg 288deg,
+        #e27508 288deg 324deg,
+        #f2e67a 324deg 360deg
+    );
+
+    transition: transform 5s cubic-bezier(0.30, 0, 0.30, 1);
+}
+
+.wheel-hub {
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    box-shadow: 0 4px 10px rgba(0,0,0,.4);
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0;
+
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 25px solid var(--accent-gold);
+
+    z-index: 10;
+}
+
+.spin-button {
+    padding: 18px 26px;
+    border: none;
+    border-radius: 10px;
+
+    background: var(--accent-gold);
+    color: #000;
+
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.spin-button:hover {
+    background: var(--accent-amber);
+}
+
+.spin-button:active {
+    transform: scale(1.08);
+}
