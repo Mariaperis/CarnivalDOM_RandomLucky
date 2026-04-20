@@ -171,3 +171,122 @@ body {
     color: var(--text-secondary);
     font-size: 11px;
 }
+
+.contenedor-ruleta {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+.estrella {
+    position: absolute;
+    font-size: 20px;
+    filter: drop-shadow(0 0 10px gold) drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+    opacity: 0.8;
+    animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+.el { top: 10%; left: 15%; }
+.e2 { top: 20%; left: 10%; }
+.e3 { top: 30%; left: 5%; }  
+.e4 { top: 50%; left: 50%; }
+.e5 { top: 70%; left: 20%; }
+.e6 { top: 80%; left: 30%; }
+.e7 { top: 60%; left: 80%; }
+.e8 { top: 40%; left: 70%; }
+.e9 { top: 25%; left: 60%; }
+.e10 { top: 15%; left: 40%; }
+
+.contenedor-principal {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden; 
+}
+.estrella {
+    position: relative;  
+    z-index: 1;
+}
+.estrella-1 { top: 10%; left: 115%; position: absolute; }
+.estrella-2 { top: 40%; right: 10%; position: absolute; }
+.estrella-3 { bottom: 20%; left: 15%; position: absolute; }
+.estrella-4 { top: 60%; left: 50%; position: absolute; }
+.estrella-5 { top: 80%; right: 20%; position: absolute; }
+.estrella-6 { top: 30%; left: 70%; position: absolute; }
+.estrella-7 { top: 50%; right: 30%; position: absolute}
+.estrella-8 { bottom: 10%; left: 40%; position: absolute; }
+.estrella-9 { top: 20%; left: 80%; position: absolute; }
+.estrella-10 { top: 70%; left: 20%; position: absolute; }
+
+site-footer {
+    background-color: #3b2d42; 
+    color: #ffffff;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif; 
+    font-size: 14px;
+    border-top: 1px solid #4a3b52;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 40px; 
+}
+
+.footer-country {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.flag-icon {
+    font-size: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.separator {
+    color: #888;
+}
+html, body {
+  height: 100%; 
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex: 1; 
+}
+
+.footer {
+  
+  background-color: #291f49;
+  padding: 10px;
+}
