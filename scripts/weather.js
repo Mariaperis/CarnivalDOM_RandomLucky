@@ -1,6 +1,4 @@
-/* ==========================================
-   WEATHER UI
-========================================== */
+/* WEATHER UI */
 
 import { getWeatherByCoords } from "../services/weather-api.js";
 import { loadNews } from "./news.js";
