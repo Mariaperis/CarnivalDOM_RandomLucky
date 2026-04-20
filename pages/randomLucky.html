@@ -1,54 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Lucky ✦</title>
-    <link rel="stylesheet" href="../style/style.css" />
-    <link rel="stylesheet" href="../style/wheel.css" />
-  </head>
 
-  <body>
-    <aside class="particles" id="particles" aria-hidden="true"></aside>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Lucky</title>
+    <link rel="stylesheet" href="../style/style.css" />
+</head>
+
+<body>
     <header class="header">
-      <section class="header-left">
-        <span class="logo-icon" aria-hidden="true">✦</span>
-        <h1 class="logo-title">
-          <span>Random Lucky</span>
-        </h1>
-      </section>
-      <aside class="header-right">
-        <section
-          class="weather-widget"
-          id="weatherWidget"
-          aria-label="Información meteorológica"
-        >
-          <span class="weather-icon" id="weatherIcon">⟳</span>
-          <section class="weather-info">
-            <p class="weather-temp" id="weatherTemp">Cargando...</p>
-            <p class="weather-city" id="weatherCity"></p>
-          </section>
+        <section class="header-left">
+            <span class="logo-icon" aria-hidden="true">✦</span>
+            <h1 class="logo-title">
+                <span>Random Lucky</span>
+            </h1>
         </section>
-      </aside>
+
+        <aside class="header-right">
+            <section class="weather-widget" id="weatherWidget" aria-label="Información meteorológica">
+                <div class="weather-box" id="weatherBox">
+                    Cargando...
+                </div>
+                <p class="weather-city" id="weatherCity"></p>
+            </section>
+        </aside>
     </header>
+
     <main>
-      <!--Sección de la ruleta -->
-        <section class="viewport">
-            <div class="wheel-layout">
-                <figure class="wheel-container">
-                <!-- Position indicator -->
-                    <div class="wheel-pointer" aria-hidden="true"></div>
-                    <!-- Main disc -->
-                    <div class="wheel-body">
-                    <!-- Yellow center piece -->
-                    <div class="wheel-hub"></div>
+        <section class="layout">
+
+            <!-- Zona izquierda -->
+            <section class="hero">
+
+                <!-- Ruleta -->
+                <section class="viewport" aria-labelledby="wheel-title">
+
+                    <div class="wheel-layout">
+
+                        <figure class="wheel-container">
+
+                            <!-- Indicador -->
+                            <div class="wheel-pointer" aria-hidden="true"></div>
+
+                            <!-- Disco -->
+                            <div class="wheel-body" id="wheel">
+                                <div class="wheel-hub"></div>
+                            </div>
+
+                        </figure>
+
+                        <!-- Botón -->
+                        <button class="spin-button" id="spinButton" type="button" aria-label="Girar la ruleta">
+                            Girar
+                        </button>
+
                     </div>
-                </figure>
-            <button class="spin-button" id="spinButton" aria-label="Girar la ruleta">Girar</button>
-            </div>
+                </section>
+
+            </section>
+            
+            <!-- Zona derecha -->
+            <aside class="layout">
+                <section class="hero"></section>
+
+                <aside class="sidebar">
+                    <h2>📰 Noticias en Directo</h2>
+                    <div class="tabs">
+                        <button id="btnTrending" class="tab active" data-cat="general">🔥 Trending</button>
+                        <button id="btnFutbol" class="tab" data-cat="sports">⚽ Fútbol</button>
+                        <button id="btnEconomia" class="tab" data-cat="business">💰 Economía</button>
+                        <button id="btnGaming" class="tab" data-cat="technology">🎮 Gaming</button>
+                    </div>
+                    <div id="news-title">Noticias</div>
+                    <div id="newsBox" class="news-list"></div>
+                </aside>
+            </aside>
         </section>
     </main>
     <script src="../scripts/script.js"></script>
-    <script src="../scripts/wheel.js"></script>
-  </body>
+</body>
+
 </html>
