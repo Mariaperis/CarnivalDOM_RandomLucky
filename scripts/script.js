@@ -13,10 +13,35 @@ form.addEventListener("submit", function (event) {
   const name = input.value.trim();
   // Quitamos espacios extra
 
+// 1. Validar si está vacío
+  if (name === "") {
+    input.value = ""; 
+    input.placeholder = "Por favor escribe un nombre"; 
+    input.classList.add("error-placeholder"); 
+    return; // Sale de la función aquí
+  }
+  
+  // 2. Validar el máximo de 10
+  if (list.children.length >= 10) {
+    input.value = ""; 
+    input.placeholder = "Máximo 10 participantes"; 
+    input.classList.add("error-placeholder");
+    return; // Sale de la función aquí
+  }
+
+  // Si pasa las validaciones, limpiamos estilos de error
+  input.classList.remove("error-placeholder");
+  input.placeholder = "Escribe un nombre...";
+
   if (name === "") {
     errorMsg.textContent = "Por favor escribe un nombre";
     return;
   }
+
+  if (list.children.length >= 10) {
+  errorMsg.textContent = "Máximo 10 participantes";
+  return;
+}
 
   // Limpiamos error si todo va bien
   errorMsg.textContent = "";

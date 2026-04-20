@@ -28,51 +28,44 @@
   </header>
   <!-- Sección de Lia -->
   <main>
-  <section class="card" aria-labelledby="title-lista">
-    
-    <h3 id="title-lista">Lista de participantes</h3>
+    <section class="card" aria-labelledby="title-lista">
 
-    <!-- Lista de nombres -->
-    <ul class="name-list" id="nameList" aria-live="polite">
-      <li><span class="dot gold"></span>Marta</li>
-      <li><span class="dot gold"></span>Andrea</li>
-      <li><span class="dot pink"></span>Jose</li>
-      <li><span class="dot pink"></span>Maritza</li>
-      <li><span class="dot gold"></span>Silvia</li>
-      <li><span class="dot gold"></span>Lorena</li>
-    </ul>
+      <h3 id="title-lista">Lista de participantes</h3>
 
-    <!-- Formulario -->
-    <form id="nameForm" class="form" novalidate>
-      <label for="nameInput" class="visually-hidden">
-        Escribe un nombre
-      </label>
+      <!-- Lista de nombres -->
+      <ul class="name-list" id="nameList" aria-live="polite"></ul>
 
-      <input
-        type="text"
-        id="nameInput"
-        name="name"
-        placeholder="Escribe un nombre..."
-        required
-        aria-describedby="errorMsg"
-      />
+      <!-- Formulario -->
+      <form id="nameForm" class="form" novalidate>
+        <label for="nameInput" class="visually-hidden">
+          Escribe un nombre
+        </label>
 
-      <p id="errorMsg" class="error" role="alert"></p>
+        <input 
+          type="text" 
+          id="nameInput" 
+          name="name" 
+          placeholder="Escribe un nombre..." 
+          required
+          aria-describedby="errorMsg" />
 
-      <div class="buttons">
-        <button type="submit" class="btn primary">
-          Añadir
-        </button>
+        <p id="errorMsg" class="error" role="alert"></p>
 
-        <button type="button" id="clearBtn" class="btn secondary">
-          LIMPIAR
-        </button>
-      </div>
-    </form>
+        <div class="buttons">
+          <button type="submit" class="btn primary">
+            Añadir
+          </button>
 
-  </section>
-</main>
+          <button type="button" id="clearBtn" class="btn secondary">
+            LIMPIAR
+          </button>
+        </div>
+      </form>
 
-    <script src="../scripts/script.js"></script>
-  </body>
+    </section>
+  </main>
+
+  <script src="../scripts/script.js"></script>
+</body>
+
 </html>
