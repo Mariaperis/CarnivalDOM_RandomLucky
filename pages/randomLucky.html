@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <aside class="particles" id="particles" aria-hidden="true"></aside>
     <header class="header">
         <section class="header-left">
             <span class="logo-icon" aria-hidden="true">✦</span>
@@ -20,6 +19,7 @@
                 <span>Random Lucky</span>
             </h1>
         </section>
+
         <aside class="header-right">
             <section class="weather-widget" id="weatherWidget" aria-label="Información meteorológica">
                 <div class="weather-box" id="weatherBox">
@@ -29,20 +29,57 @@
             </section>
         </aside>
     </header>
-    <main class="layout">
-        <section class="hero"></section>
 
-        <aside class="sidebar">
-            <h2>📰 Noticias en Directo</h2>
-            <div class="tabs">
-                <button id="btnTrending" class="tab active" data-cat="general">🔥 Trending</button>
-                <button id="btnFutbol" class="tab" data-cat="sports">⚽ Fútbol</button>
-                <button id="btnEconomia" class="tab" data-cat="business">💰 Economía</button>
-                <button id="btnGaming" class="tab" data-cat="technology">🎮 Gaming</button>
-            </div>
-            <div id="news-title">Noticias</div>
-            <div id="newsBox" class="news-list"></div>
-        </aside>
+    <main>
+        <section class="layout">
+
+            <!-- Zona izquierda -->
+            <section class="hero">
+
+                <!-- Ruleta -->
+                <section class="viewport" aria-labelledby="wheel-title">
+
+                    <div class="wheel-layout">
+
+                        <figure class="wheel-container">
+
+                            <!-- Indicador -->
+                            <div class="wheel-pointer" aria-hidden="true"></div>
+
+                            <!-- Disco -->
+                            <div class="wheel-body" id="wheel">
+                                <div class="wheel-hub"></div>
+                            </div>
+
+                        </figure>
+
+                        <!-- Botón -->
+                        <button class="spin-button" id="spinButton" type="button" aria-label="Girar la ruleta">
+                            Girar
+                        </button>
+
+                    </div>
+                </section>
+
+            </section>
+            
+            <!-- Zona derecha -->
+            <aside class="layout">
+                <section class="hero"></section>
+
+                <aside class="sidebar">
+                    <h2>📰 Noticias en Directo</h2>
+                    <div class="tabs">
+                        <button id="btnTrending" class="tab active" data-cat="general">🔥 Trending</button>
+                        <button id="btnFutbol" class="tab" data-cat="sports">⚽ Fútbol</button>
+                        <button id="btnEconomia" class="tab" data-cat="business">💰 Economía</button>
+                        <button id="btnGaming" class="tab" data-cat="technology">🎮 Gaming</button>
+                    </div>
+                    <div id="news-title">Noticias</div>
+                    <div id="newsBox" class="news-list"></div>
+                </aside>
+            </aside>
+        </section>
     </main>
     <script type="module" src="../scripts/main.js"></script>
 </body>
