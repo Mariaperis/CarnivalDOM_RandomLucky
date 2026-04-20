@@ -9,7 +9,7 @@ navigator.geolocation.getCurrentPosition(async (pos) => {
     const lon = pos.coords.longitude;
 
     const url =
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -58,7 +58,7 @@ async function cargarNoticias(pais, categoria = "general") {
         =============================== */
 
         let url =
-        `https://gnews.io/api/v4/top-headlines?country=${pais}&lang=es&topic=${tema}&max=8&apikey=${newsKey}`;
+            `https://gnews.io/api/v4/top-headlines?country=${pais}&lang=es&topic=${tema}&max=8&apikey=${newsKey}`;
 
         let res = await fetch(url);
         let data = await res.json();
@@ -70,7 +70,7 @@ async function cargarNoticias(pais, categoria = "general") {
         if (!data.articles || data.articles.length === 0) {
 
             url =
-            `https://gnews.io/api/v4/top-headlines?country=us&lang=es&topic=${tema}&max=8&apikey=${newsKey}`;
+                `https://gnews.io/api/v4/top-headlines?country=us&lang=es&topic=${tema}&max=8&apikey=${newsKey}`;
 
             res = await fetch(url);
             data = await res.json();
@@ -114,3 +114,19 @@ document.getElementById("btnTrending").onclick = () => cargarNoticias(paisActual
 document.getElementById("btnFutbol").onclick = () => cargarNoticias(paisActual, "sports");
 document.getElementById("btnEconomia").onclick = () => cargarNoticias(paisActual, "business");
 document.getElementById("btnGaming").onclick = () => cargarNoticias(paisActual, "technology");
+
+
+/* DORIS */
+const wheel = document.querySelector('.wheel-body');
+const button = document.getElementById('spinButton');
+
+let currentRotation = 0;
+
+button.addEventListener('click', () => {
+    const extraDegrees = Math.floor(Math.random() * 360);
+    const totalSpin = 1900 + extraDegrees;
+
+    currentRotation += totalSpin;
+
+    wheel.style.transform = `rotate(${currentRotation}deg)`;
+});
