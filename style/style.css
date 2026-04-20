@@ -15,11 +15,16 @@
     --border-subtle: rgba(155, 89, 224, 0.2);
     --border-glow: rgba(245, 200, 66, 0.4);
     --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.6);
+    --buttonhover: #8d7d16
     --radius-card: 18px;
     --radius-btn: 50px;
     --font-display: 'Playfair Display', serif;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'Space Mono', monospace;
+    --canvas-bg: #1a1a2e;
+    --brand-yellow: #ffcc00;
+    --wheel-size: 320px;
+    --spacing-left: 40px; 
 }
 
 /* ===== RESET & BASE ===== */
@@ -134,6 +139,14 @@ body {
 }
 
 /* ===== WEATHER WIDGET ===== */
+/*para realizar cambio a todo el contenedor ruleta  y ingreso de los nombres */
+.main-layout {
+    display: flex;
+    align-items: center; /* Alineación vertical */
+    justify-content: flex-start; /* Empuja todo al inicio (izquierda) */
+    gap: 50px; /* Espacio entre tu ruleta y la sección de nombres/resultados */
+    padding: 40px;
+}
 .weather-widget {
     display: flex;
     align-items: center;
