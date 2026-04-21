@@ -43,13 +43,29 @@
 }
 
 /* ===== BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
 body {
     background: var(--bg-deep);
     color: var(--text-primary);
     font-family: var(--font-body);
     min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    flex: 1;
 }
 
 /* ===== HEADER ===== */
@@ -126,9 +142,6 @@ body {
     padding: 0 20px;
 }
 
-main {
-    width: 100%;
-}
 
 .hero {
     display: flex;
