@@ -3,8 +3,8 @@
 .viewport {
     background-color: var(--canvas-bg);
     display: flex;
-    align-items: center; /* Centrado vertical */
-    justify-content: flex-start; /* Alineado a la izquierda */
+    align-items: center; 
+    justify-content: flex-start; 
     height: 100vh;
     margin: 0;
     padding-left: var(--spacing-left); /* Espacio controlado */
