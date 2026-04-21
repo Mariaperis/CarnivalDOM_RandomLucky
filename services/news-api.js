@@ -20,7 +20,6 @@ export async function getNews(country = "es", category = "general") {
     let response = await fetch(url);
     let data = await response.json();
 
-    /* fallback USA */
     if (!data.articles || data.articles.length === 0) {
 
         url =

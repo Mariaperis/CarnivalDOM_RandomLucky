@@ -7,41 +7,79 @@ export let currentCountry = "es";
 
 export function initWeather() {
 
-    navigator.geolocation.getCurrentPosition(async (pos) => {
+    navigator.geolocation.getCurrentPosition(
 
-        try {
+        async (pos) => {
 
-            const lat = pos.coords.latitude;
-            const lon = pos.coords.longitude;
+            try {
 
-            const data = await getWeatherByCoords(lat, lon);
+                const lat = pos.coords.latitude;
+                const lon = pos.coords.longitude;
 
-            const city = data.name;
-            const country = data.sys.country.toLowerCase();
+                const data = await getWeatherByCoords(lat, lon);
 
-            currentCountry = country;
+                const city = data.name;
+                const country = data.sys.country.toLowerCase();
 
-            const temp = Math.round(data.main.temp);
-            const icon = data.weather[0].icon;
+                currentCountry = country;
 
-            const flag =
-                `https://flagsapi.com/${country.toUpperCase()}/flat/64.png`;
+                const temp = Math.round(data.main.temp);
+                const icon = data.weather[0].icon;
+                const desc = data.weather[0].description;
 
-            const weatherIcon =
-                `https://openweathermap.org/img/wn/${icon}.png`;
+                const flag = `https://flagcdn.com/w40/${country}.png`;
+                const weatherIcon =
+                    `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
-            document.getElementById("weatherBox").innerHTML = `
-                <img src="${flag}">
-                <span>${city}</span>
-                <img src="${weatherIcon}">
-                <span>${temp}°C</span>
-            `;
+                document.getElementById("flagIcon").src = flag;
+                document.getElementById("weatherIcon").src = weatherIcon;
 
-            loadNews(country, "general");
+                document.getElementById("weatherCity").textContent = city;
+                document.getElementById("weatherDesc").textContent = desc;
+                document.getElementById("weatherTemp").textContent = `${temp}°C`;
 
-        } catch (error) {
-            console.error(error);
+                loadNews(country, "general");
+
+            } catch (error) {
+
+                console.error("ERROR WEATHER:", error);
+
+                showPermissionError();
+                loadNews("es", "general");
+            }
+
+        },
+
+        (error) => {
+
+            console.warn("Permiso ubicación denegado");
+
+            showPermissionError();
+
+            loadNews("es", "general");
         }
 
-    });
+    );
+}
+
+
+/* MENSAJE SI NO HAY PERMISOS */
+
+function showPermissionError() {
+
+    document.getElementById("weatherWidget").innerHTML = `
+        <div class="permission-box">
+            <span class="perm-icon">📍</span>
+
+            <div>
+                <div class="perm-title">
+                    Ubicación desactivada
+                </div>
+
+                <div class="perm-subtitle">
+                    Activa permisos del navegador
+                </div>
+            </div>
+        </div>
+    `;
 }
