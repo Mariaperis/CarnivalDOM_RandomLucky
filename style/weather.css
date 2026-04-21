@@ -1,0 +1,49 @@
+/* ==================================================
+   WEATHER.CSS
+   Widget del clima
+================================================== */
+
+.weather-widget {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: var(--bg-weather);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-btn);
+
+    padding: 8px 18px;
+
+    font-family: var(--font-mono);
+    font-size: 13px;
+
+    transition: border-color .3s;
+}
+
+.weather-widget:hover {
+    border-color: var(--border-glow);
+}
+
+.weather-city {
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+.weather-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 18px;
+    width: fit-content;
+
+    color: white;
+    font-family: Arial;
+
+    backdrop-filter: blur(10px);
+}
+
+.weather-box img {
+    width: 24px;
+    height: 24px;
+}
