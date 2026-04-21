@@ -1,49 +1,112 @@
-/* ==================================================
-   WEATHER.CSS
-   Widget del clima
-================================================== */
+/* ===============================
+   WEATHER PREMIUM
+=============================== */
 
 .weather-widget {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
 
-    background: var(--bg-weather);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-btn);
+    width: 340px;
+    /* mismo ancho aprox noticias */
+    height: 76px;
 
-    padding: 8px 18px;
+    padding: 0 22px;
 
-    font-family: var(--font-mono);
-    font-size: 13px;
+    border-radius: 22px;
 
-    transition: border-color .3s;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, .08),
+            rgba(255, 255, 255, .03));
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .30),
+        inset 0 1px 0 rgba(255, 255, 255, .05);
+
+    transition: .25s ease;
 }
 
 .weather-widget:hover {
-    border-color: var(--border-glow);
+    transform: translateY(-2px);
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+.weather-left,
+.weather-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.weather-right{
+    margin-left:28px;
+}
+
+.flag-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255, 255, 255, .15);
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
 }
 
 .weather-city {
-    color: var(--text-secondary);
-    font-size: 11px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: .2px;
 }
 
-.weather-box {
+.weather-desc {
+    color: rgba(255, 255, 255, .60);
+    font-size: 12px;
+    margin-top: 4px;
+    text-transform: capitalize;
+}
+
+.weather-icon {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, .15));
+}
+
+.weather-temp {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* PERMISOS */
+
+.permission-box {
     display: flex;
     align-items: center;
-    gap: 10px;
-
-    padding: 10px 18px;
-    width: fit-content;
-
-    color: white;
-    font-family: Arial;
-
-    backdrop-filter: blur(10px);
+    gap: 12px;
 }
 
-.weather-box img {
-    width: 24px;
-    height: 24px;
+.perm-icon {
+    font-size: 26px;
+}
+
+.perm-title {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.perm-subtitle {
+    color: rgba(255, 255, 255, .55);
+    font-size: 11px;
 }
