@@ -1,9 +1,11 @@
 import { initWeather, currentCountry } from "./weather.js";
 import { loadNews } from "./news.js";
 import { initWheel } from "./wheel.js";
+import { initForm } from "./form.js";
 
 initWeather();
 initWheel();
+initForm();
 
 /* BOTONES */
 
