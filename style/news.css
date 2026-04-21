@@ -4,9 +4,11 @@
 ================================================== */
 
 .sidebar {
-    padding: 18px;
+    width: 330px;
+    max-width: 330px;
+    justify-self: end;
     background: #1b012a;
-    border-left: 1px solid rgba(255,255,255,.08);
+    border-left: 1px solid rgba(255, 255, 255, .08);
 }
 
 .sidebar h2 {
@@ -60,7 +62,7 @@
     border-radius: 14px;
 
     background: #2a093d;
-    border: 1px solid rgba(255,255,255,.06);
+    border: 1px solid rgba(255, 255, 255, .06);
 }
 
 .news-item a {
@@ -78,6 +80,6 @@
 @media (max-width: 900px) {
     .sidebar {
         border-left: none;
-        border-top: 1px solid rgba(255,255,255,.08);
+        border-top: 1px solid rgba(255, 255, 255, .08);
     }
 }

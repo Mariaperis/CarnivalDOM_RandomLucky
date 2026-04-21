@@ -63,11 +63,9 @@ body {
 
     padding: 16px 32px;
 
-    background: linear-gradient(
-        180deg,
-        rgba(63, 39, 110, 0.98) 0%,
-        rgba(10, 6, 18, 0.8) 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(63, 39, 110, 0.98) 0%,
+            rgba(10, 6, 18, 0.8) 100%);
 
     border-bottom: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
@@ -89,11 +87,9 @@ body {
 
     font-size: 20px;
 
-    background: linear-gradient(
-        135deg,
-        var(--accent-gold),
-        var(--accent-amber)
-    );
+    background: linear-gradient(135deg,
+            var(--accent-gold),
+            var(--accent-amber));
 
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(245, 200, 66, 0.4);
@@ -109,11 +105,9 @@ body {
 }
 
 .logo-title span {
-    background: linear-gradient(
-        90deg,
-        var(--accent-gold),
-        var(--accent-pink)
-    );
+    background: linear-gradient(90deg,
+            var(--accent-gold),
+            var(--accent-pink));
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -125,18 +119,33 @@ body {
 /* ===== MAIN LAYOUT ===== */
 .layout {
     display: grid;
-    grid-template-columns: 1fr 360px;
-    min-height: calc(100vh - 86px);
+    grid-template-columns: 1fr 450px 330px;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+main {
+    width: 100%;
 }
 
 .hero {
-    background: radial-gradient(circle at top, #230037, #110018);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 /* ===== ANIMATIONS ===== */
 @keyframes rotateStar {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* ===== RESPONSIVE ===== */

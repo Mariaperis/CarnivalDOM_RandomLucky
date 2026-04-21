@@ -4,11 +4,11 @@
 ================================================== */
 
 .viewport {
-    display: flex;
+    display: flexbox;
     align-items: center;
     justify-content: flex-start;
     height: 100%;
-    padding-left: 80px;
+    padding-top: 100px;
 }
 
 .wheel-layout {
