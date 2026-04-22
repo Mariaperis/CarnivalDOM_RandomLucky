@@ -1,59 +1,70 @@
-// wheelUI.js
-import { WheelLogic } from '../controllers/wheel-controller.js  
+const wheel = document.getElementById("wheel");
 
-export function initWheel() {
-    const wheel = document.getElementById('wheel');
-    const button = document.getElementById('spinButton');
-    const list = document.getElementById("nameList");
+const colors = [
+    "#e6c4fc", "#c0d40e", "#f652e8", "#f0bb4a", "#0d72ad",
+    "#e92246", "#a116ec", "#82d5e7", "#e27508", "#f2e67a"
+];
 
-    let currentRotation = 0;
+export function renderWheel(names) {
+  const canvas = document.getElementById("wheelCanvas");
+  const ctx = canvas.getContext("2d");
 
-    // --- FUNCIÓN PARA DIBUJAR LOS NOMBRES ---
-    const updateWheelLabels = (names) => {
-        // Borramos nombres anteriores
-        wheel.querySelectorAll('.wheel-label').forEach(l => l.remove());
+  const size = wheel.offsetWidth;
+  canvas.width = size;
+  canvas.height = size;
 
-        names.forEach((name, i) => {
-            const label = document.createElement('div');
-            label.className = 'wheel-label';
-            label.innerText = name;
+  // limpiar SIEMPRE primero
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Lógica de posición:
-            // Cada gajo es 36°. El centro del gajo es (i * 36 + 18).
-            // Restamos 90 porque el 0 de CSS empieza a la derecha y tu ruleta arriba.
-            const angle = (i * 36) + 18 - 90;
-            
-            // Aplicamos rotación
-            label.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-            
-            wheel.appendChild(label);
-        });
-    };
+  // si no hay nombres, dejar ruleta vacía
+  if (!names.length) {
+    wheel.style.background = "#333";
+    return;
+  }
 
-    // --- EVENTO DEL BOTÓN GIRAR ---
-    button.addEventListener('click', () => {
-        const participants = Array.from(list.querySelectorAll('li'))
-                                  .map(li => li.textContent.trim());
+  const center = size / 2;
+  const radius = size / 2;
 
-        if (participants.length < 2) return alert("¡Añade al menos 2 nombres!");
+  const total = names.length;
+  const segment = (Math.PI * 2) / total;
 
-        // 1. Dibujamos los nombres en sus sitios
-        updateWheelLabels(participants);
+  const gradients = [];
 
-        // 2. Calculamos y aplicamos el giro
-        currentRotation = WheelLogic.calculateRotation(currentRotation);
-        wheel.style.transform = `rotate(${currentRotation}deg)`;
+  names.forEach((name, i) => {
+    const startDeg = i * (360 / total);
+    const endDeg = startDeg + (360 / total);
 
-        // 3. Desactivar botón para evitar doble clic
-        button.disabled = true;
+    gradients.push(
+      `${colors[i % colors.length]} ${startDeg}deg ${endDeg}deg`
+    );
+  });
 
-        // 4. Mostrar resultado tras la animación (5 segundos)
-        setTimeout(() => {
-            const winnerIdx = WheelLogic.getWinnerIndex(currentRotation);
-            const winnerName = participants[winnerIdx % participants.length];
-            
-            alert(`🎉 ¡El ganador es: ${winnerName}!`);
-            button.disabled = false;
-        }, 5000);
-    });
+  wheel.style.background =
+    `conic-gradient(${gradients.join(",")})`;
+
+  names.forEach((name, i) => {
+    const angle = i * segment + segment / 2 - Math.PI / 2;
+
+    const textRadius = radius * 0.63;
+
+    const x = center + Math.cos(angle) * textRadius;
+    const y = center + Math.sin(angle) * textRadius;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle + Math.PI / 2);
+
+    ctx.fillStyle = "white";
+    ctx.font = "bold 18px Poppins";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(name, 0, 0);
+
+    ctx.restore();
+  });
+}
+
+export function rotateWheel(deg) {
+    wheel.style.transform = `rotate(${deg}deg)`;
 }

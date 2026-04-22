@@ -1,45 +1,22 @@
 const form = document.getElementById("nameForm");
 const input = document.getElementById("nameInput");
 const list = document.getElementById("nameList");
-const errorMsg = document.getElementById("errorMsg");
 const clearBtn = document.getElementById("clearBtn");
 
 export function getFormElements() {
-  return { form, input, list, errorMsg, clearBtn };
+  return { form, input, list, clearBtn };
 }
 
-export function addParticipant(name) {
-  const li = document.createElement("li");
-
-  const dot = document.createElement("span");
-  dot.classList.add("dot", "gold");
-
-  li.appendChild(dot);
-  li.appendChild(document.createTextNode(name));
-
-  list.appendChild(li);
-}
-
-export function clearParticipants() {
+export function renderParticipants(names) {
   list.innerHTML = "";
-}
 
-export function showInputError(message) {
-  input.value = "";
-  input.placeholder = message;
-  input.classList.add("error-placeholder");
+  names.forEach(name => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="dot gold"></span>${name}`;
+    list.appendChild(li);
+  });
 }
 
 export function resetInput() {
   input.value = "";
-  input.placeholder = "Escribe un nombre...";
-  input.classList.remove("error-placeholder");
-}
-
-export function clearErrorMessage() {
-  errorMsg.textContent = "";
-}
-
-export function getParticipantsCount() {
-  return list.children.length;
 }

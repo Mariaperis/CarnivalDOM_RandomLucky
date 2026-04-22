@@ -1,35 +1,39 @@
+import { ParticipantsStore } from "../models/participants-store.js";
 import {
   getFormElements,
-  addParticipant,
-  clearParticipants,
-  showInputError,
-  resetInput,
-  clearErrorMessage,
-  getParticipantsCount
+  renderParticipants,
+  resetInput
 } from "../ui/forms-ui.js";
+
+import { renderWheel } from "../ui/wheel-ui.js";
 
 export function initForm() {
   const { form, input, clearBtn } = getFormElements();
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  form.addEventListener("submit", e => {
+    e.preventDefault();
 
     const name = input.value.trim();
 
-    if (!name) {
-      showInputError("Por favor escribe un nombre");
-      return;
-    }
+    if (!name) return;
+    if (ParticipantsStore.count() >= 10) return;
 
-    if (getParticipantsCount() >= 10) {
-      showInputError("Máximo 10 participantes");
-      return;
-    }
-
-    addParticipant(name);
+    ParticipantsStore.add(name);
+    syncUI();
     resetInput();
-    clearErrorMessage();
   });
 
-  clearBtn.addEventListener("click", clearParticipants);
+  clearBtn.addEventListener("click", () => {
+    ParticipantsStore.clear();
+    syncUI();
+  });
+
+  syncUI();
+}
+
+export function syncUI() {
+  const names = ParticipantsStore.getAll();
+
+  renderParticipants(names);
+  renderWheel(names);
 }
