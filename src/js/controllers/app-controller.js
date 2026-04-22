@@ -3,21 +3,15 @@ import { WheelController } from "./wheel-controller.js";
 import { showWinnerModal } from "./modal-controller.js";
 
 export function initApp() {
-  const button = document.getElementById("spinButton");
+  const spinBtn = document.getElementById("spinButton");
 
-  button.addEventListener("click", () => {
+  spinBtn.addEventListener("click", () => {
+    const participants = ParticipantsStore.getActive();
 
-    const participants = ParticipantsStore.getAll();
-
-    if (participants.length < 2) return;
-
-    button.disabled = true;
+    if (participants.length < 1) return;
 
     WheelController.spin(participants, winner => {
-
       showWinnerModal(winner);
-
-      button.disabled = false;
     });
   });
 }

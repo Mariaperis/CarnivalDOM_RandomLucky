@@ -3,6 +3,7 @@ import { initNews } from "./controllers/news-controller.js";
 import { initForm } from "./controllers/forms-controller.js";
 import { initStars } from "./controllers/stars-controller.js";
 import { initApp } from "./controllers/app-controller.js";
+import { initModalController } from "./controllers/modal-controller.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initWeather();
@@ -10,4 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initForm();
   initStars();
   initApp();
+  initModalController();
 });
