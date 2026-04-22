@@ -6,11 +6,10 @@
   background: var(--bg-card);
   padding: 2rem;
   border-radius: var(--radius-card);
-  width: 450px;
+  width: 90%;
+  max-width: 450px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, .6);
-
-  justify-self: start;
-  margin-left: -180px;
+  margin: 2rem auto;
 }
 
 /* LISTA */
@@ -85,12 +84,29 @@ h3 {
 
 /* ERROR */
 .error {
-  color: var(--accent-pink);
-  font-size: 0.8rem;
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: -0.2rem; /* Lo pega un poco más al input */
+  margin-bottom: 0.8rem;
+  display: block;
+  min-height: 1.2em; /* Evita que el botón "salte" cuando aparece el texto */
+  transition: opacity 0;
+}
+
+.error:empty {
+  opacity: 0;
+  pointer-events: none; /* Evita que el ratón "choque" con un elemento invisible */
 }
 
 /* ACCESIBILIDAD */
 .visually-hidden {
   position: absolute;
-  left: -9999px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

@@ -5,43 +5,51 @@ export function initForm() {
   const errorMsg = document.getElementById("errorMsg");
   const clearBtn = document.getElementById("clearBtn");
 
+  if (!form) return;
+
+  const handleUIError = (message = "") => {
+    errorMsg.textContent = message;
+    if (message) {
+      input.classList.add("input-error");
+    } else {
+      input.classList.remove("input-error");
+    }
+  };
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const name = input.value.trim();
 
     if (name === "") {
-      input.value = "";
-      input.placeholder = "Por favor escribe un nombre";
-      input.classList.add("error-placeholder");
+      handleUIError("Por favor escribe un nombre");
+      return;
+    }
+
+    if (!/^[a-zA-ZÁ-ÿ\s]+$/.test(name)) {
+      handleUIError("Solo se permiten letras");
       return;
     }
 
     if (list.children.length >= 10) {
-      input.value = "";
-      input.placeholder = "Máximo 10 participantes";
-      input.classList.add("error-placeholder");
+      handleUIError("Máximo 10 participantes");
       return;
     }
 
-    input.classList.remove("error-placeholder");
-    input.placeholder = "Escribe un nombre...";
-    errorMsg.textContent = "";
+    handleUIError("");
 
     const li = document.createElement("li");
-
-    const dot = document.createElement("span");
-    dot.classList.add("dot", "gold");
-
-    li.appendChild(dot);
-    li.appendChild(document.createTextNode(name));
-
+    li.innerHTML = `<span class="dot gold"></span> ${name}`;
     list.appendChild(li);
 
     input.value = "";
+    input.focus(); // El cursor se queda listo para el siguiente nombre
   });
 
+  input.addEventListener("input", () => handleUIError(""));
+    
   clearBtn.addEventListener("click", function () {
     list.innerHTML = "";
+    handleUIError("");
   });
 }
