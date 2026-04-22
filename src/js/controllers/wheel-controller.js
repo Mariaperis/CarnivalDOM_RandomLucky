@@ -68,13 +68,10 @@ export function initWheel() {
     const total = participants.length;
     const segmentDegrees = 360 / total;
 
+        const actualRotation = currentRotation % 360;
     // 1. Calculamos el ángulo en el que se detuvo
-    let finalAngle = (360 - (currentRotation % 360)) % 360;
+     const correctedAngle = (360 - actualRotation + 270) % 360;
 
-    // 2. AJUSTE DE PRECISIÓN: 
-    // Si tu flecha está arriba, necesitamos sumar 90 grados a la lógica 
-    // para que el "punto 0" coincida con el norte.
-    const correctedAngle = (finalAngle + 90) % 360;
     
     // 3. Calculamos el índice con el ángulo corregido
     const winnerIndex = Math.floor(correctedAngle / segmentDegrees);
