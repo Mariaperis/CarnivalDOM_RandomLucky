@@ -1,19 +1,38 @@
-/* ===== ROULETTE SECTION ===== */
+/* ==================================================
+    WHEEL.CSS
+    Todo lo relacionado con la ruleta
+================================================== */
 
 .viewport {
-    background-color: var(--canvas-bg);
-    display: flex;
-    align-items: center; 
-    justify-content: flex-start; 
-    height: 100vh;
-    margin: 0;
-    padding-left: var(--spacing-left); /* Espacio controlado */
+    display: flexbox;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    padding-top: 100px;
 }
 
+#game{
+    display: flex;
+    flex-direction:row;     
+    justify-content: center; 
+    align-items:flex-start;     
+    gap: 5rem;               
+    padding: 40px;
+    min-height: 100vh;         
+          
+} 
+
+.wheel-layout {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;     
+    gap: 1.5rem;             
+}
 .wheel-container {
     position: relative;
-    width: var(--wheel-size);
-    height: var(--wheel-size);
+    width: 400px;
+    height: 400px;
+    
 }
 
 .wheel-body {
@@ -21,34 +40,33 @@
     height: 100%;
     border-radius: 50%;
     border: 6px solid #f6f1f6;
-    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Multicolored sections using conic-gradient */
+
     background: conic-gradient(
-        
-        #e6c4fc 0deg 36deg, 
-        #c0d40e 36deg 72deg, 
-        #f652e8 72deg 108deg, 
-        #f0bb4a 108deg 144deg, 
-        #0d72ad 144deg 180deg, 
-        #e92246 180deg 216deg, 
-        #a116ec 216deg 252deg, 
-        #82d5e7 252deg 288deg, 
-        #e27508 288deg 324deg, 
+        #e6c4fc 0deg 36deg,
+        #c0d40e 36deg 72deg,
+        #f652e8 72deg 108deg,
+        #f0bb4a 108deg 144deg,
+        #0d72ad 144deg 180deg,
+        #e92246 180deg 216deg,
+        #a116ec 216deg 252deg,
+        #82d5e7 252deg 288deg,
+        #e27508 288deg 324deg,
         #f2e67a 324deg 360deg
     );
+
     transition: transform 5s cubic-bezier(0.30, 0, 0.30, 1);
 }
 
 .wheel-hub {
     width: 20%;
     height: 20%;
-    background-color: var(--brand-yellow);
     border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    z-index: 2;
+    background: var(--accent-gold);
+    box-shadow: 0 4px 10px rgba(0,0,0,.4);
 }
 
 .wheel-pointer {
@@ -56,29 +74,74 @@
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
+
     width: 0;
     height: 0;
+
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-top: 25px solid var(--brand-yellow);
-    z-index: 3;
+    border-top: 25px solid var(--accent-gold);
+
+    z-index: 10;
 }
-/* Estilo básico para el botón */
+
 .spin-button {
-    margin: 10px auto;
-    display: flex;
-    padding: 20px 20px;
-    background-color: var(--brand-yellow);
+    padding: 18px 26px;
     border: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 10px;
+
+    background: var(--accent-gold);
+    color: #000;
+
+    font-weight: 700;
     cursor: pointer;
-    transition: transform 0.2s;
+
+    transition: .2s;
 }
+
 .spin-button:hover {
-    background-color:#e27508;
+    background: var(--accent-amber);
 }
 
 .spin-button:active {
-    transform: scale(1.1);
+    transform: scale(1.08);
+}
+
+/* Responsive: Para pantallas menores a 768px (móviles y tablets pequeñas) */
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column; /* Apila los 3 bloques principales uno debajo de otro */
+        gap: 2rem;              /* Espacio entre cada bloque en vertical */
+        padding: 10px;
+    }
+
+    .hero {
+        flex-direction: column; /* Asegura que dentro de hero también se apilen */
+        width: 100%;
+    }
+      .wheel-container {
+        width: 150px;  /* Ajusta según el tamaño de tu ruleta */
+        height: 150px; /* IMPORTANTE: Mantener altura para que no sea una línea */
+        position: relative;
+        margin: 0 auto;
+    }
+    .wheel-body {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        display: block; /* Evita colapsos de flex */
+    }
+
+    .wheel-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;      /* Espacio más pequeño entre ruleta y botón */
+        padding-top: 20px;
+    }
+
+    /* Opcional: Ajustar el tamaño de la ruleta si es muy grande para el móvil */
+    .wheel-body {
+        max-width: 300px; 
+        height: auto;
+    }
 }
