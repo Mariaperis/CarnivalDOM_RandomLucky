@@ -93,3 +93,8 @@ h3 {
   position: absolute;
   left: -9999px;
 }
+
+.crossed{
+  text-decoration: line-through;
+  opacity: .45;
+}

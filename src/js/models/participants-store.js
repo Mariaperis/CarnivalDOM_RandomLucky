@@ -16,9 +16,26 @@ export const ParticipantsStore = {
     return [...participants];
   },
 
+  getActive() {
+    return participants.filter(p => !p.eliminated);
+  },
+
   add(name) {
-    participants.push(name);
+    participants.push({
+      name,
+      eliminated: false
+    });
+
     save();
+  },
+
+  eliminate(name) {
+    const player = participants.find(p => p.name === name);
+
+    if (player) {
+      player.eliminated = true;
+      save();
+    }
   },
 
   clear() {
@@ -28,5 +45,9 @@ export const ParticipantsStore = {
 
   count() {
     return participants.length;
+  },
+
+  activeCount() {
+    return this.getActive().length;
   }
 };

@@ -32,8 +32,9 @@ export function initForm() {
 }
 
 export function syncUI() {
-  const names = ParticipantsStore.getAll();
+  const all = ParticipantsStore.getAll();
+  const active = ParticipantsStore.getActive();
 
-  renderParticipants(names);
-  renderWheel(names);
+  renderParticipants(all);
+  renderWheel(active.map(p => p.name));
 }

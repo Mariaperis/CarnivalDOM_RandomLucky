@@ -7,12 +7,19 @@ export function getFormElements() {
   return { form, input, list, clearBtn };
 }
 
-export function renderParticipants(names) {
+export function renderParticipants(players) {
   list.innerHTML = "";
 
-  names.forEach(name => {
+  players.forEach(player => {
     const li = document.createElement("li");
-    li.innerHTML = `<span class="dot gold"></span>${name}`;
+
+    li.innerHTML = `
+      <span class="dot gold"></span>
+      <span class="${player.eliminated ? "crossed" : ""}">
+        ${player.name}
+      </span>
+    `;
+
     list.appendChild(li);
   });
 }
