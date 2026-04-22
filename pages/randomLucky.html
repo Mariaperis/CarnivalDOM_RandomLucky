@@ -5,12 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random Lucky ✦</title>
-    <link rel="stylesheet" href="../style/main.css" />
-    <link rel="stylesheet" href="../style/news.css">
-    <link rel="stylesheet" href="../style/weather.css">
-    <link rel="stylesheet" href="../style/wheel.css">
-    <link rel="stylesheet" href="../style/form.css">
-    <link rel="stylesheet" href="../style/footer.css">
+    <link rel="stylesheet" href="../src/styles/main.css">
+    <link rel="stylesheet" href="../src/styles/news.css">
+    <link rel="stylesheet" href="../src/styles/weather.css">
+    <link rel="stylesheet" href="../src/styles/wheel.css">
+    <link rel="stylesheet" href="../src/styles/form.css">
+    <link rel="stylesheet" href="../src/styles/footer.css">
+    <link rel="stylesheet" href="../src/styles/stars.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
@@ -22,78 +26,78 @@
             </h1>
         </section>
 
-        <aside class="header-right">
-            <section class="weather-widget" id="weatherWidget" aria-label="Información meteorológica">
-                <div class="weather-box" id="weatherBox">
-                    Cargando...
+        <section class="weather-widget" id="weatherWidget">
+
+            <div class="weather-left">
+                <img id="flagIcon" class="flag-icon">
+
+                <div class="weather-info">
+                    <span id="weatherCity" class="weather-city">Madrid</span>
+                    <span id="weatherDesc" class="weather-desc">Cargando...</span>
                 </div>
-                <p class="weather-city" id="weatherCity"></p>
-            </section>
-        </aside>
+            </div>
+
+            <div class="weather-right">
+                <img id="weatherIcon" class="weather-icon">
+                <span id="weatherTemp" class="weather-temp">25°C</span>
+            </div>
+
+        </section>
     </header>
 
     <main>
-        <section class="layout">
+        <section class="page-layout">
 
-            <!-- Zona izquierda -->
-            <section class="hero">
+            <!-- BLOQUE IZQUIERDO -->
+            <section class="main-content">
 
                 <!-- Ruleta -->
-                <section class="viewport" aria-labelledby="wheel-title">
+                <section class="hero">
+                    <section class="viewport">
+                        <div class="wheel-layout">
 
-                    <div class="wheel-layout">
+                            <figure class="wheel-container">
+                                <div class="wheel-pointer"></div>
 
-                        <figure class="wheel-container">
+                                <div class="wheel-body" id="wheel">
+                                    <div class="wheel-hub"></div>
+                                </div>
+                            </figure>
 
-                            <!-- Indicador -->
-                            <div class="wheel-pointer" aria-hidden="true"></div>
+                            <button class="spin-button" id="spinButton">
+                                Girar
+                            </button>
 
-                            <!-- Disco -->
-                            <div class="wheel-body" id="wheel">
-                                <div class="wheel-hub"></div>
-                            </div>
-
-                        </figure>
-
-                        <!-- Botón -->
-                        <button class="spin-button" id="spinButton" type="button" aria-label="Girar la ruleta">
-                            Girar
-                        </button>
-
-                    </div>
+                        </div>
+                    </section>
                 </section>
 
-            </section>
-
-            <!-- Zona central -->
-            <section class="card" aria-labelledby="title-lista">
-
-                <h3 id="title-lista">Lista de participantes</h3>
-
-                <!-- Lista de nombres -->
-                <ul class="name-list" id="nameList" aria-live="polite"></ul>
-
                 <!-- Formulario -->
-                <form id="nameForm" class="form" novalidate>
-                    <label for="nameInput" class="visually-hidden">
-                        Escribe un nombre
-                    </label>
+                <section class="card">
 
-                    <input type="text" id="nameInput" name="name" placeholder="Escribe un nombre..." required
-                        aria-describedby="errorMsg" />
+                    <h3>Lista de participantes</h3>
 
-                    <p id="errorMsg" class="error" role="alert"></p>
+                    <ul class="name-list" id="nameList"></ul>
 
-                    <div class="buttons">
-                        <button type="submit" class="btn primary">
-                            AÑADIR
-                        </button>
+                    <form id="nameForm" class="form">
 
-                        <button type="button" id="clearBtn" class="btn secondary">
-                            LIMPIAR
-                        </button>
-                    </div>
-                </form>
+                        <input type="text" id="nameInput" placeholder="Escribe un nombre..." />
+
+                        <p id="errorMsg" class="error"></p>
+
+                        <div class="buttons">
+                            <button type="submit" class="btn primary">
+                                AÑADIR
+                            </button>
+
+                            <button type="button" id="clearBtn" class="btn secondary">
+                                LIMPIAR
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
 
             </section>
 
@@ -109,20 +113,6 @@
                 </div>
                 <div id="news-title">Noticias</div>
                 <div id="newsBox" class="news-list"></div>
-            </aside>
-            <aside>
-                <div class="container-stars">
-                    <span class="estrella e1">⭐</span>
-                    <span class="estrella e2">⭐</span>
-                    <span class="estrella e3">⭐</span>
-                    <span class="estrella e4">⭐</span>
-                    <span class="estrella e5">⭐</span>
-                    <span class="estrella e6">⭐</span>
-                    <span class="estrella e7">⭐</span>
-                    <span class="estrella e8">⭐</span>
-                    <span class="estrella e9">⭐</span>
-                    <span class="estrella e10">⭐</span>
-                </div>
             </aside>
         </section>
     </main>
@@ -150,6 +140,7 @@
         </div>
     </footer>
 </body>
-<script type="module" src="../scripts/main.js"></script>
+<div id="stars-container"></div>
+<script type="module" src="../src/js/main.js"></script>
 
 </html>

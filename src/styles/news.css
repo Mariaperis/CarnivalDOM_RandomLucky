@@ -1,0 +1,122 @@
+/* ==================================================
+   NEWS.CSS
+   Sidebar noticias
+================================================== */
+
+.sidebar {
+    height: fit-content;
+    align-self: flex-start;
+
+    padding: 18px;
+    border-radius: 24px;
+
+    background: rgba(20, 10, 45, .72);
+    border: 1px solid rgba(255, 255, 255, .06);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+
+.sidebar h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #f4c542;
+
+    margin-bottom: 18px;
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.tab {
+    border: none;
+    border-radius: 14px;
+    padding: 12px;
+
+    background: #2a0d4a;
+    color: #fff;
+
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.tab:hover {
+    transform: translateY(-2px);
+}
+
+.tab.active {
+    background: linear-gradient(135deg, #ff8a3d, #ff5e62);
+}
+
+#news-title {
+    margin: 8px 0 12px;
+    font-weight: 700;
+    opacity: .85;
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    max-height: 70vh;
+    overflow-y: auto;
+
+    padding-right: 6px;
+}
+
+.news-item {
+    padding: 14px;
+    margin-bottom: 12px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .05);
+
+    transition: .25s;
+}
+
+.news-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, .05);
+}
+
+.news-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.news-item small {
+    display: block;
+    margin-top: 6px;
+    opacity: .65;
+}
+
+@media (max-width: 1100px) {
+
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: static;
+    }
+
+}

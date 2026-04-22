@@ -61,7 +61,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: Arial, sans-serif;
+    font-family: 'Manrope', sans-serif;
 }
 
 main {
@@ -133,13 +133,29 @@ main {
 }
 
 /* ===== MAIN LAYOUT ===== */
-.layout {
+
+.page-layout {
     display: grid;
-    grid-template-columns: 1fr 450px 330px;
-    gap: 16px;
-    align-items: center;
+    grid-template-columns: 1fr 340px;
+    gap: 30px;
+
     width: 100%;
-    padding: 0 20px;
+    padding: 30px;
+    align-items: start;
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    /* 👈 clave */
 }
 
 
@@ -149,21 +165,52 @@ main {
     align-items: center;
 }
 
-
-/* ===== ANIMATIONS ===== */
 @keyframes rotateStar {
-    from {
-        transform: rotate(0deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
 
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-    .layout {
-        grid-template-columns: 1fr;
+
+@media (max-width: 768px) {
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+
+        padding: 16px;
+        height: auto;
+    }
+
+    .header-left {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .logo-title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .weather-widget {
+        width: 100%;
+        max-width: 320px;
+        height: 68px;
+    }
+
+    .logo-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .logo-title {
+        font-size: 24px;
     }
 }
