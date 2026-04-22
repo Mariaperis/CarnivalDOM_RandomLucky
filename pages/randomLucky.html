@@ -1,117 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Random Lucky ✦</title>
-  <link rel="stylesheet" href="../style/main.css" />
-  <link rel="stylesheet" href="../style/news.css">
-  <link rel="stylesheet" href="../style/weather.css">
-  <link rel="stylesheet" href="../style/wheel.css">
-  <link rel="stylesheet" href="../style/form.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Lucky ✦</title>
+    <link rel="stylesheet" href="../src/styles/main.css">
+    <link rel="stylesheet" href="../src/styles/news.css">
+    <link rel="stylesheet" href="../src/styles/weather.css">
+    <link rel="stylesheet" href="../src/styles/wheel.css">
+    <link rel="stylesheet" href="../src/styles/form.css">
+    <link rel="stylesheet" href="../src/styles/footer.css">
+    <link rel="stylesheet" href="../src/styles/stars.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
-  <header class="header">
-    <section class="header-left">
-      <span class="logo-icon" aria-hidden="true">✦</span>
-      <h1 class="logo-title">
-        <span>Random Lucky</span>
-      </h1>
-    </section>
-
-    <aside class="header-right">
-      <section class="weather-widget" id="weatherWidget" aria-label="Información meteorológica">
-        <div class="weather-box" id="weatherBox">
-          Cargando...
-        </div>
-        <p class="weather-city" id="weatherCity"></p>
-      </section>
-    </aside>
-  </header>
-
-  <main>
-    <section class="layout">
-
-      <!-- Zona izquierda -->
-      <section class="hero">
-
-        <!-- Ruleta -->
-        <section class="viewport" aria-labelledby="wheel-title">
-
-          <div class="wheel-layout">
-
-            <figure class="wheel-container">
-
-              <!-- Indicador -->
-              <div class="wheel-pointer" aria-hidden="true"></div>
-
-              <!-- Disco -->
-              <div class="wheel-body" id="wheel">
-                <div class="wheel-hub"></div>
-              </div>
-
-            </figure>
-
-            <!-- Botón -->
-            <button class="spin-button" id="spinButton" type="button" aria-label="Girar la ruleta">
-              Girar
-            </button>
-
-          </div>
+    <header class="header">
+        <section class="header-left">
+            <span class="logo-icon" aria-hidden="true">✦</span>
+            <h1 class="logo-title">
+                <span>Random Lucky</span>
+            </h1>
         </section>
 
-      </section>
+        <section class="weather-widget" id="weatherWidget">
 
-      <!-- Zona central -->
-      <section class="card" aria-labelledby="title-lista">
+            <div class="weather-left">
+                <img id="flagIcon" class="flag-icon">
 
-        <h3 id="title-lista">Lista de participantes</h3>
+                <div class="weather-info">
+                    <span id="weatherCity" class="weather-city">Madrid</span>
+                    <span id="weatherDesc" class="weather-desc">Cargando...</span>
+                </div>
+            </div>
 
-        <!-- Lista de nombres -->
-        <ul class="name-list" id="nameList" aria-live="polite"></ul>
+            <div class="weather-right">
+                <img id="weatherIcon" class="weather-icon">
+                <span id="weatherTemp" class="weather-temp">25°C</span>
+            </div>
 
-        <!-- Formulario -->
-        <form id="nameForm" class="form" novalidate>
-          <label for="nameInput" class="visually-hidden">
-            Escribe un nombre
-          </label>
+        </section>
+    </header>
 
-          <input type="text" id="nameInput" name="name" placeholder="Escribe un nombre..." required minlength="3"
-            maxlength="15" pattern="^[a-zA-ZÁ-ÿ]+$" aria-describedby="errorMsg" />
+    <main>
+        <section class="page-layout">
 
-          <p id="errorMsg" class="error" role="alert"></p>
+            <!-- BLOQUE IZQUIERDO -->
+            <section class="main-content">
 
-          <div class="buttons">
-            <button type="submit" class="btn primary">
-              AÑADIR
-            </button>
+                <!-- Ruleta -->
+                <section class="hero">
+                    <section class="viewport">
+                        <div class="wheel-layout">
 
-            <button type="button" id="clearBtn" class="btn secondary">
-              LIMPIAR
-            </button>
-          </div>
-        </form>
+                            <figure class="wheel-container">
+                                <div class="wheel-pointer"></div>
 
-      </section>
+                                <div class="wheel-body" id="wheel">
+                                    <div class="wheel-hub"></div>
+                                </div>
+                            </figure>
+
+                            <button class="spin-button" id="spinButton">
+                                Girar
+                            </button>
+
+                        </div>
+                    </section>
+                </section>
+
+                <!-- Formulario -->
+                <section class="card">
+
+                    <h3>Lista de participantes</h3>
+
+                    <ul class="name-list" id="nameList"></ul>
+
+                    <form id="nameForm" class="form">
+
+                        <input type="text" id="nameInput" placeholder="Escribe un nombre..." />
+
+                        <p id="errorMsg" class="error"></p>
+
+                        <div class="buttons">
+                            <button type="submit" class="btn primary">
+                                AÑADIR
+                            </button>
+
+                            <button type="button" id="clearBtn" class="btn secondary">
+                                LIMPIAR
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </section>
 
 
-      <!-- Zona derecha -->
-      <aside class="sidebar">
-        <h2>📰 Noticias en Directo</h2>
-        <div class="tabs">
-          <button id="btnTrending" class="tab active" data-cat="general">🔥 Trending</button>
-          <button id="btnFutbol" class="tab" data-cat="sports">⚽ Fútbol</button>
-          <button id="btnEconomia" class="tab" data-cat="business">💰 Economía</button>
-          <button id="btnGaming" class="tab" data-cat="technology">🎮 Gaming</button>
+            <!-- Zona derecha -->
+            <aside class="sidebar">
+                <h2>📰 Noticias en Directo</h2>
+                <div class="tabs">
+                    <button id="btnTrending" class="tab active" data-cat="general">🔥 Trending</button>
+                    <button id="btnFutbol" class="tab" data-cat="sports">⚽ Fútbol</button>
+                    <button id="btnEconomia" class="tab" data-cat="business">💰 Economía</button>
+                    <button id="btnGaming" class="tab" data-cat="technology">🎮 Gaming</button>
+                </div>
+                <div id="news-title">Noticias</div>
+                <div id="newsBox" class="news-list"></div>
+            </aside>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+
+            <div class="footer-country">
+                <img src="https://flagcdn.com/w40/es.png" alt="Bandera de España" width="20">
+                <span>España</span>
+            </div>
+
+            <nav class="footer-links">
+                <a href="#">Política de privacidad</a>
+                <span class="separator">|</span>
+
+                <a href="#">Uso de cookies</a>
+                <span class="separator">|</span>
+
+                <a href="#">Condiciones de uso</a>
+                <span class="separator">|</span>
+
+                <a href="#">Avisos legales</a>
+            </nav>
+
         </div>
-        <div id="news-title">Noticias</div>
-        <div id="newsBox" class="news-list"></div>
-      </aside>
-    </section>
-  </main>
-  <script type="module" src="../scripts/main.js"></script>
+    </footer>
 </body>
+<div id="stars-container"></div>
+<script type="module" src="../src/js/main.js"></script>
 
 </html>
