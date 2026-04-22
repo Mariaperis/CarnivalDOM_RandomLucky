@@ -29,11 +29,9 @@ const FORTUNES = [
 ];
 
 
-export function initModalController() {
-    const spinButton = document.getElementById("spinButton");
-    const nameList = document.getElementById("nameList");
+export function showWinnerModal(name) {
+  const randomFortune =
+    FORTUNES[Math.floor(Math.random() * FORTUNES.length)];
 
-    spinButton.addEventListener("click", () => {
-        openModal("María", "La abundancia viene en muchas formas. Abre los ojos y notarás la tuya.");
-    });
+  openModal(name, randomFortune);
 }

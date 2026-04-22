@@ -4,26 +4,42 @@ let currentRotation = 0;
 
 export const WheelController = {
   spin(participants, callback) {
-    const extra = Math.floor(Math.random() * 360);
-    currentRotation += 1800 + extra;
+    const total = participants.length;
+    const segment = 360 / total;
+
+    const winnerIndex =
+      Math.floor(Math.random() * total);
+
+    const winnerAngle =
+      winnerIndex * segment + segment / 2;
+
+    const targetRotation = 360 - winnerAngle;
+
+    const currentVisible =
+      currentRotation % 360;
+
+    let delta =
+      targetRotation - currentVisible;
+
+    if (delta < 0) delta += 360;
+
+    const extraSpins = 1800;
+
+    currentRotation += extraSpins + delta;
+
+    console.log({
+      currentVisible,
+      targetRotation,
+      delta,
+      final: currentRotation % 360,
+      index: winnerIndex,
+      winner: participants[winnerIndex]
+    });
 
     rotateWheel(currentRotation);
 
     setTimeout(() => {
-      const winner = this.getWinner(participants);
-      callback(winner);
+      callback(participants[winnerIndex]);
     }, 5000);
-  },
-
-  getWinner(participants) {
-    const total = participants.length;
-    const segment = 360 / total;
-
-    const angle = currentRotation % 360;
-    const corrected = (360 - angle + 270) % 360;
-
-    const index = Math.floor(corrected / segment);
-
-    return participants[index];
   }
 };
