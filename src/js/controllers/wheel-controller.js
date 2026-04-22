@@ -1,36 +1,29 @@
-import {
-  getWheelElements,
-  rotateWheel,
-  disableSpinButton,
-  enableSpinButton
-} from "../ui/wheel-ui.js";
+import { rotateWheel } from "../ui/wheel-ui.js";
 
 let currentRotation = 0;
-let isSpinning = false;
 
-export function initWheel() {
-  const { button } = getWheelElements();
+export const WheelController = {
+  spin(participants, callback) {
+    const extra = Math.floor(Math.random() * 360);
+    currentRotation += 1800 + extra;
 
-  button.addEventListener("click", handleSpin);
-}
+    rotateWheel(currentRotation);
 
-function handleSpin() {
-  if (isSpinning) return;
+    setTimeout(() => {
+      const winner = this.getWinner(participants);
+      callback(winner);
+    }, 5000);
+  },
 
-  isSpinning = true;
+  getWinner(participants) {
+    const total = participants.length;
+    const segment = 360 / total;
 
-  disableSpinButton();
+    const angle = currentRotation % 360;
+    const corrected = (360 - angle + 270) % 360;
 
-  const extraDegrees = Math.floor(Math.random() * 360);
+    const index = Math.floor(corrected / segment);
 
-  const totalSpin = 1800 + extraDegrees;
-
-  currentRotation += totalSpin;
-
-  rotateWheel(currentRotation);
-
-  setTimeout(() => {
-    enableSpinButton();
-    isSpinning = false;
-  }, 4000);
-}
+    return participants[index];
+  }
+};
