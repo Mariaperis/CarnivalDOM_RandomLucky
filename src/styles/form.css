@@ -1,16 +1,15 @@
 /* ==================================================
-   FORM.CSS
-   Card de formulario para añadir participantes a la ruleta
+  FORM.CSS
+  Card de formulario para añadir participantes a la ruleta
 ================================================== */
 .card {
   background: var(--bg-card);
   padding: 2rem;
   border-radius: var(--radius-card);
-  width: 450px;
+  width: 600px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, .6);
-
-  justify-self: start;
- /* margin-left: -180px;*/
+  display: flex;
+  flex-direction: column;
 }
 
 /* LISTA */
