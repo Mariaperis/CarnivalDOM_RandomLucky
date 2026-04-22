@@ -5,58 +5,86 @@ export function initWheel() {
 
     let currentRotation = 0;
 
-    // 1. FUNCIÓN PARA DIBUJAR NOMBRES (DOM)
     const updateWheelLabels = (names) => {
     wheel.querySelectorAll('.wheel-label').forEach(l => l.remove());
     
-    // 1. Calculamos cuánto mide cada gajo (ej: si son 6, mide 60°)
-    const segmentDegrees = 360 / names.length;
+    const total = names.length;
+    const segmentDegrees = 360 / total;
+    const colors = ['#e6c4fc', '#c0d40e', '#f652e8', '#f0bb4a', '#0d72ad', '#e92246', '#a116ec', '#82d5e7', '#e27508', '#f2e67a'];
+    let gradientParts = [];
 
     names.forEach((name, i) => {
+        const start = i * segmentDegrees;
+        const end = (i + 1) * segmentDegrees;
+        gradientParts.push(`${colors[i % colors.length]} ${start}deg ${end}deg`);
+
         const label = document.createElement('div');
         label.className = 'wheel-label';
         label.innerText = name;
 
-        // 2. Usamos segmentDegrees en lugar de 36. 
-        // El (segmentDegrees / 2) es para que el texto quede en medio del gajo.
+        // --- LA NUEVA LÓGICA RADIAL ---
         const angle = (i * segmentDegrees) + (segmentDegrees / 2) - 90;
+
+        label.style.position = 'absolute';
+        label.style.top = '50%';
+        label.style.left = '50%';
+        // El ancho de la etiqueta será casi el radio de la ruleta (200px)
+        label.style.width = '160px'; 
         
-        label.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+        // Alineamos el texto a la IZQUIERDA (para que la primera letra esté en el borde)
+        label.style.textAlign = 'left'; 
+        label.style.paddingLeft = '10px'; // Pequeño margen con el borde exterior
+        
+        // Punto de giro en el inicio de la etiqueta (el centro de la ruleta)
+        label.style.transformOrigin = '0% 50%'; 
+        
+        // Rotamos y movemos un poco para que no choque con el hub central
+        label.style.transform = `rotate(${angle + 90}deg) translateY(0px)`;
+        
         wheel.appendChild(label);
     });
+
+    wheel.style.background = `conic-gradient(${gradientParts.join(', ')})`;
 };
 
 
-    // 2. EVENTO GIRAR
     button.addEventListener('click', (e) => {
-        e.preventDefault(); // IMPORTANTE: Evita que la página se refresque
+        e.preventDefault();
 
         const participants = Array.from(list.querySelectorAll('li'))
                                   .map(li => li.textContent.trim());
 
-        if (participants.length < 2) {
-            alert("¡Necesitas al menos 2 personas!");
-            return;
-        }
+        if (participants.length < 2) return alert("¡Mínimo 2 participantes!");
 
         updateWheelLabels(participants);
 
-        // LÓGICA DE GIRO
         const extraDegrees = Math.floor(Math.random() * 360);
-        currentRotation += 1800 + extraDegrees; // 5 vueltas + extra
+        currentRotation += 1800 + extraDegrees;
         
         wheel.style.transform = `rotate(${currentRotation}deg)`;
         button.disabled = true;
 
-        // 3. LÓGICA DEL GANADOR
         setTimeout(() => {
-            // Calculamos qué gajo quedó bajo el puntero (arriba)
-            const finalAngle = (360 - (currentRotation % 360)) % 360;
-            const winnerIndex = Math.floor(((finalAngle + 90) % 360) / 36);
-            const winner = participants[winnerIndex % participants.length];
-            
-            alert(`🎉 ¡El ganador es: ${winner}!`);
-            button.disabled = false;
-        }, 5000); 
+    const total = participants.length;
+    const segmentDegrees = 360 / total;
+
+    // 1. Calculamos el ángulo en el que se detuvo
+    let finalAngle = (360 - (currentRotation % 360)) % 360;
+
+    // 2. AJUSTE DE PRECISIÓN: 
+    // Si tu flecha está arriba, necesitamos sumar 90 grados a la lógica 
+    // para que el "punto 0" coincida con el norte.
+    const correctedAngle = (finalAngle + 90) % 360;
+    
+    // 3. Calculamos el índice con el ángulo corregido
+    const winnerIndex = Math.floor(correctedAngle / segmentDegrees);
+    const winner = participants[winnerIndex];
+    
+    alert(`🎉 ¡El ganador es: ${winner}!`);
+    button.disabled = false;
+}, 5000);
+
     });
 }
+
+
