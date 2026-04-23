@@ -1,11 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Lucky</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Lucky ✦</title>
+    <link rel="stylesheet" href="../src/styles/main.css">
+    <link rel="stylesheet" href="../src/styles/news.css">
+    <link rel="stylesheet" href="../src/styles/weather.css">
+    <link rel="stylesheet" href="../src/styles/wheel.css">
+    <link rel="stylesheet" href="../src/styles/form.css">
+    <link rel="stylesheet" href="../src/styles/footer.css">
+    <link rel="stylesheet" href="../src/styles/stars.css">
+    <link rel="stylesheet" href="../src/styles/modal.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
 </head>
+
 <body>
-    
+    <header class="header">
+        <section class="header-left">
+            <span class="logo-icon" aria-hidden="true">✦</span>
+            <h1 class="logo-title">
+                <span>Random Lucky</span>
+            </h1>
+        </section>
+
+        <section class="weather-widget" id="weatherWidget">
+
+            <div class="weather-left">
+                <img id="flagIcon" class="flag-icon">
+
+                <div class="weather-info">
+                    <span id="weatherCity" class="weather-city">Madrid</span>
+                    <span id="weatherDesc" class="weather-desc">Cargando...</span>
+                </div>
+            </div>
+
+            <div class="weather-right">
+                <img id="weatherIcon" class="weather-icon">
+                <span id="weatherTemp" class="weather-temp">25°C</span>
+            </div>
+
+        </section>
+    </header>
+
+    <main>
+        <section class="page-layout">
+
+            <!-- BLOQUE IZQUIERDO -->
+            <section class="main-content">
+
+                <!-- Ruleta -->
+                <section class="hero">
+                    <section class="viewport">
+                        <div class="wheel-layout">
+
+                            <figure class="wheel-container">
+                                <div class="wheel-pointer"></div>
+
+                                <div class="wheel-body" id="wheel">
+                                    <canvas id="wheelCanvas"></canvas>
+                                    <div class="wheel-hub"></div>
+                                </div>
+                            </figure>
+
+                            <button type="button" class="spin-button" id="spinButton">
+                                Girar
+                            </button>
+
+                        </div>
+                    </section>
+                </section>
+
+                <!-- Formulario -->
+                <section class="card">
+
+                    <h3>Lista de participantes</h3>
+
+                    <ul class="name-list" id="nameList"></ul>
+
+                    <form id="nameForm" class="form">
+
+                        <input type="text" id="nameInput" placeholder="Escribe un nombre..." />
+
+                        <p id="errorMsg" class="error"></p>
+
+                        <div class="buttons">
+                            <button type="submit" class="btn primary">
+                                AÑADIR
+                            </button>
+
+                            <button type="button" id="clearBtn" class="btn secondary">
+                                LIMPIAR
+                            </button>
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </section>
+
+
+            <!-- Zona derecha -->
+            <aside class="sidebar">
+                <h2>📰 Noticias en Directo</h2>
+                <div class="tabs">
+                    <button id="btnTrending" class="tab active" data-cat="general">🔥 Trending</button>
+                    <button id="btnFutbol" class="tab" data-cat="sports">⚽ Fútbol</button>
+                    <button id="btnEconomia" class="tab" data-cat="business">💰 Economía</button>
+                    <button id="btnGaming" class="tab" data-cat="technology">🎮 Gaming</button>
+                </div>
+                <div id="news-title">Noticias</div>
+                <div id="newsBox" class="news-list"></div>
+            </aside>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+
+            <div class="footer-country">
+                <img src="https://flagcdn.com/w40/es.png" alt="Bandera de España" width="20">
+                <span>España</span>
+            </div>
+
+            <nav class="footer-links">
+                <a href="#">Política de privacidad</a>
+                <span class="separator">|</span>
+
+                <a href="#">Uso de cookies</a>
+                <span class="separator">|</span>
+
+                <a href="#">Condiciones de uso</a>
+                <span class="separator">|</span>
+
+                <a href="#">Avisos legales</a>
+            </nav>
+
+        </div>
+    </footer>
 </body>
+
+<div class="result-overlay" id="resultOverlay">
+    <section class="result-modal" role="dialog" aria-modal="true" aria-labelledby="modalName"
+        aria-describedby="modalFortune">
+
+        <header class="modal-stars" aria-hidden="true">
+            <span>★</span>
+            <span>✦</span>
+            <span>★</span>
+        </header>
+
+        <h2 class="modal-name" id="modalName"></h2>
+        <div class="modal-divider" aria-hidden="true"></div>
+        <p class="modal-fortune-label">Tu suerte dice...</p>
+        <blockquote class="modal-fortune" id="modalFortune"></blockquote>
+
+        <footer>
+            <button id="closeModalBtn" class="modal-close">Cerrar ✕</button>
+        </footer>
+    </section>
+</div>
+
+<div id="stars-container"></div>
+
+<script type="module" src="../src/js/main.js"></script>
+
 </html>
